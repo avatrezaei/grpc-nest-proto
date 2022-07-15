@@ -1,0 +1,72 @@
+syntax = "proto3"
+
+
+package order;
+
+serive order.OrderService {
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse) {}
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse) {}
+  rpc UpdateOrder(UpdateOrderRequest) returns (UpdateOrderResponse) {}
+  rpc DeleteOrder(DeleteOrderRequest) returns (DeleteOrderResponse) {}
+}
+
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message GetOrderResponse {
+  string order_id = 1;
+  string customer_id = 2;
+  string product_id = 3;
+  string quantity = 4;
+  string price = 5;
+  string order_date = 6;
+  string delivery_date = 7;
+  string status = 8;
+}
+
+message CreateOrderRequest {
+  string customer_id = 1;
+  string product_id = 2;
+  string quantity = 3;
+  string price = 4;
+  string order_date = 5;
+  string delivery_date = 6;
+  string status = 7;
+}
+
+message CreateOrderResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string order_id = 1;
+}
+
+
+message UpdateOrderRequest {
+  string order_id = 1;
+  string customer_id = 2;
+  string product_id = 3;
+  string quantity = 4;
+  string price = 5;
+  string order_date = 6;
+  string delivery_date = 7;
+  string status = 8;
+}
+
+message UpdateOrderResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string order_id = 1;
+}
+
+
+message DeleteOrderRequest {
+  string order_id = 1;
+}
+
+message DeleteOrderResponse {
+  int32 status = 1;
+  repeated string error = 2;
+  string order_id = 1;
+}
